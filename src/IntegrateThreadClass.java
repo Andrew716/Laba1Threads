@@ -7,20 +7,14 @@ public class IntegrateThreadClass extends Thread {
     private double RIGHT_LIMIT;
     private double localSum_1;
     private double localSum_2;
-    public static final double STEP_1 = 0.001;
-    public static final double STEP_2 = 0.0001;
+
 
     public double function(double x ){
 
         return Math.pow(x,3)/Math.pow( Math.pow(x,2)+9,3/2);
     }
 
-    public static double initial(double x){
-
-        return Math.pow(Math.pow(x,2)+9,1/2)+ 9/Math.pow(Math.pow(x,2)+9,1/2);
-    }
-
-    public double getLocalSum_2() {
+        public double getLocalSum_2() {
         return localSum_2;
     }
 
@@ -35,11 +29,12 @@ public class IntegrateThreadClass extends Thread {
 
     @Override
     public void run(){
-        for (double i = LEFT_LIMIT; i<RIGHT_LIMIT; i+=STEP_1){
-            localSum_1 += function(i)*STEP_1;
+        for (double i = LEFT_LIMIT; i <= RIGHT_LIMIT; i += MainClass.STEP_1){
+            localSum_1 += function(i)*MainClass.STEP_1;
+
         }
-        for (double i = LEFT_LIMIT; i<RIGHT_LIMIT; i+=STEP_2){
-            localSum_2 += function(i)*STEP_2;
+        for (double i = LEFT_LIMIT; i <= RIGHT_LIMIT; i += MainClass.STEP_2){
+            localSum_2 += function(i)*MainClass.STEP_2;
         }
     }
 }
